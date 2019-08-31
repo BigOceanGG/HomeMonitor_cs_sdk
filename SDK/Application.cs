@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace ocean.sdk
 {
-    class Application
+    public class Application
     {
         public string NodeUrl { get; }
 
@@ -19,7 +19,7 @@ namespace ocean.sdk
             this.NodeUrl = nodeUrl;
         }
 
-        public ApplicationResp FindAppInfo(string address,string id)
+        public ApplicationResp FindAppInfo(string id)
         {
             string url = string.Format("{0}/manager/app/findAppInfo?id={1}", NodeUrl, id);
             return this.CallChainAPI<ApplicationResp>(url);
@@ -43,7 +43,7 @@ namespace ocean.sdk
             {
                 return JsonConvert.DeserializeObject<T>(json);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 throw ApiError.FromJson(json);
             }
