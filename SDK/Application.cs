@@ -43,7 +43,7 @@ namespace ocean.sdk
             {
                 return JsonConvert.DeserializeObject<T>(json);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw ApiError.FromJson(json);
             }
